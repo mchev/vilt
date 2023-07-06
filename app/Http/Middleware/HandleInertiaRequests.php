@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -30,6 +32,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
@@ -39,6 +42,25 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                 ]);
             },
+            'localization' => [
+                'locales' => config('localization.locales'),
+                'currentLocale' => app()->getLocale(),
+                'translations' => function() {
+                    $locale = app()->getLocale();
+                    return Cache::rememberForever('translations.' . $locale, function () use ($locale) {
+                        $translations = [];
+
+                        // TODO : Check if there is a lang_path() function or something similar
+                        $langPath = base_path('/lang/' . $locale . '.json');
+
+                        if (File::exists($langPath)) {
+                            $translations = json_decode(file_get_contents($langPath), true);
+                        }
+
+                        return $translations;
+                    });
+                }
+            ],
         ]);
     }
 }

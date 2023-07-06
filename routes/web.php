@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Guest\HomeController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +19,17 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/locale/{locale}', function (string $locale) {
+    if (! in_array($locale, config('localization.locales'))) {
+        abort(400);
+    }
+    Session()->put('locale', $locale);
+    return redirect()->back();
+})->name('locale');
+
+Route::get('/', [HomeController::class, '__invoke'])
+    ->name('home');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
