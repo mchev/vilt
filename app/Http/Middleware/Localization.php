@@ -17,9 +17,9 @@ class Localization
     {
         $locale = session('locale');
 
-        if ($locale) {
-            App::setLocale($locale);
-        }
+        $locale
+            ? app()->setLocale($locale)
+            : session()->put('locale', config('app.locale'));
 
         return $next($request);
     }

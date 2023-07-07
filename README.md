@@ -17,6 +17,7 @@ Vilt is an open-source repository designed to kickstart your development project
 - Role based access control
 - Two-factor authentication
 - API authentication
+- Documentation
 
 ## Installation
 1. Clone the repository

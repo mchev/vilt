@@ -1,12 +1,10 @@
 <?php
 
 use App\Http\Controllers\Guest\HomeController;
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +22,12 @@ Route::get('/locale/{locale}', function (string $locale) {
         abort(400);
     }
     Session()->put('locale', $locale);
+
     return redirect()->back();
 })->name('locale');
 
 Route::get('/', [HomeController::class, '__invoke'])
     ->name('home');
-
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
