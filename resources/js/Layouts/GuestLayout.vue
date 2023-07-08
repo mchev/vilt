@@ -11,10 +11,8 @@ import { Link } from "@inertiajs/vue3";
     <div class="min-h-screen flex flex-col w-full bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-200">
         <GuestHeader />
 
-        <div class="flex flex-col flex-grow sm:justify-center items-center">
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                <slot />
-            </div>
+        <div class="flex flex-col flex-grow w-full sm:justify-center items-center">
+           <slot />
         </div>
 
         <Footer/>

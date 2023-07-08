@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { usePage } from "@inertiajs/vue3";
 
-const translate = (key, count = 1, placeholders = {}) => {
+export const __ = (key, count = 1, placeholders = {}) => {
     const translations = usePage().props.localization.translations;
     const translationKey = key + (count === 1 ? ".singular" : ".plural");
     const translation = translations[translationKey] || translations[key];
@@ -19,10 +19,8 @@ const translate = (key, count = 1, placeholders = {}) => {
     return key;
 };
 
-const Translation = {
+export const Translation = {
     install: (app) => {
-        app.config.globalProperties.__ = translate;
+        app.config.globalProperties.__ = __;
     },
 };
-
-export default Translation;

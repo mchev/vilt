@@ -11,6 +11,7 @@ Vilt is an open-source repository designed to kickstart your development project
 ## Key Features
 - [x] No extra dependancies
 - [x] Localization
+- [x] `<script setup>` syntax.
 - [ ] A collection of most common Vue and Tailwind CSS components
 - [ ] Wisiwig editor
 - [ ] Data tables
