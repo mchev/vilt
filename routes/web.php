@@ -18,7 +18,10 @@ use Inertia\Inertia;
 */
 
 Route::get('/locale/{locale}', function (string $locale) {
-    if (! in_array($locale, config('localization.locales'))) {
+    $locales = config('localization.locales');
+    $isoArray = array_column($locales, 'iso');
+
+    if (!in_array($locale, $isoArray)) {
         abort(400);
     }
     Session()->put('locale', $locale);

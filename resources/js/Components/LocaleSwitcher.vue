@@ -1,29 +1,44 @@
 <script setup>
-import { router } from "@inertiajs/vue3";
+import { computed } from "vue";
+import { Link, router, usePage } from "@inertiajs/vue3";
+import Flag from "@/Components/Flag.vue";
 import Dropdown from "@/Components/Dropdown.vue";
 
 const setLocale = (locale) => {
 	router.visit(route("locale", { locale }, { only: ["localization"] }));
 };
+
+const localization = usePage().props.localization;
+
+const currentLocale = computed(() => {
+	return localization.locales.find((x) => x.iso === localization.currentLocale);
+});
 </script>
 <template>
-	<div class="flex items-center justify-end space-x-8">
+	<div v-if="currentLocale" class="flex items-center justify-end space-x-8">
 		<Dropdown>
 			<template #trigger>
-				{{ $page.props.localization.currentLocale }}
+				<div
+					class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+				>
+					<Flag :iso="currentLocale.iso" class="w-5 h-5 mr-2 rounded-full"/>
+					{{ currentLocale.label }}
+				</div>
 			</template>
 			<template #content>
-				<div v-for="locale in $page.props.localization.locales" :key="locale" class="flex flex-col gap-2">
-					<button
-						@click="setLocale(locale)"
-						:class="{
-							'text-blue-600 dark:text-blue-400 font-semibold': locale === $page.props.localization.currentLocale,
-							'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300': locale !== $page.props.localization.currentLocale,
-						}"
-					>
-						{{ locale }}
-					</button>
-				</div>
+				<ul class="font-medium" role="none">
+					<li v-for="locale in $page.props.localization.locales.filter((x) => x.iso !== currentLocale.iso)" :key="locale">
+						<button
+							type="button"
+							@click="setLocale(locale.iso)"
+							class="inline-flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+							role="menuitem"
+						>
+							<Flag :iso="locale.iso" class="w-5 h-5 mr-2 rounded-full"/>
+							{{ locale.label }}
+						</button>
+					</li>
+				</ul>
 			</template>
 		</Dropdown>
 	</div>

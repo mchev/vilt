@@ -14,8 +14,18 @@ return [
     */
 
     'locales' => [
-        'en',
-        'fr',
+        [
+            'label' => 'English (US)',
+            'iso' => 'en',
+        ],
+        [
+            'label' => 'Français', 
+            'iso' => 'fr',
+        ],
+        [
+            'label' => 'Deutsh',
+            'iso' => 'de',
+        ],
     ],
 
 ];

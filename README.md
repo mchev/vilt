@@ -9,15 +9,17 @@ Vilt is an open-source repository designed to kickstart your development project
 - [Tailwind CSS](https://tailwindcss.com/)
 
 ## Key Features
-- No extra dependancies
-- Localization
-- A collection of most common Vue and Tailwind CSS components
-- Dark mode
-- Admin section
-- Role based access control
-- Two-factor authentication
-- API authentication
-- Documentation
+- [x] No extra dependancies
+- [x] Localization
+- [ ] A collection of most common Vue and Tailwind CSS components
+- [ ] Wisiwig editor
+- [ ] Data tables
+- [ ] Dark mode
+- [ ] Admin section
+- [ ] Role based access control
+- [ ] Two-factor authentication
+- [ ] API authentication
+- [ ] Documentation
 
 ## Installation
 1. Clone the repository

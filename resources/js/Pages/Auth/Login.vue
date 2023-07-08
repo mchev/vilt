@@ -1,5 +1,6 @@
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
+import LoginForm from "@/Pages/Auth/Partials/LoginForm.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 
 defineProps({
