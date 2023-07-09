@@ -1160,5 +1160,8 @@
     "Hard Break": "Zeilenumbruch",
     "Clear Format": "Formatierung entfernen",
     "Undo": "Rückgängig machen",
-    "Redo": "Wiederherstellen"
+    "Redo": "Wiederherstellen",
+    "Dark" : "Dunkel",
+    "Light" : "Hell",
+    "System" : "System"
 }

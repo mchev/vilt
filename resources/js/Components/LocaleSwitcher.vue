@@ -19,9 +19,9 @@ const currentLocale = computed(() => {
 		<Dropdown>
 			<template #trigger>
 				<div
-					class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+					class="inline-flex items-center gap-2 font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
 				>
-					<Flag :iso="currentLocale.iso" class="w-5 h-5 mr-2 rounded-full"/>
+					<Flag :iso="currentLocale.iso" class="w-5 h-5 rounded-full"/>
 					{{ currentLocale.label }}
 				</div>
 			</template>
@@ -31,10 +31,10 @@ const currentLocale = computed(() => {
 						<button
 							type="button"
 							@click="setLocale(locale.iso)"
-							class="inline-flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+							class="inline-flex items-center w-full gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
 							role="menuitem"
 						>
-							<Flag :iso="locale.iso" class="w-5 h-5 mr-2 rounded-full"/>
+							<Flag :iso="locale.iso" class="w-5 h-5 rounded-full"/>
 							{{ locale.label }}
 						</button>
 					</li>

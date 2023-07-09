@@ -19,7 +19,7 @@ return [
             'iso' => 'en',
         ],
         [
-            'label' => 'Français', 
+            'label' => 'Français',
             'iso' => 'fr',
         ],
         [

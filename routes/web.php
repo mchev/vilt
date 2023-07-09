@@ -21,7 +21,7 @@ Route::get('/locale/{locale}', function (string $locale) {
     $locales = config('localization.locales');
     $isoArray = array_column($locales, 'iso');
 
-    if (!in_array($locale, $isoArray)) {
+    if (! in_array($locale, $isoArray)) {
         abort(400);
     }
     Session()->put('locale', $locale);
