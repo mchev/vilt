@@ -28,7 +28,7 @@ trait Sluggable
         $count = 1;
 
         while ($this->slugExists($slug)) {
-            $slug = Str::slug($this->getAttributeValue($this->sluggableField())) . '-' . $count;
+            $slug = Str::slug($this->getAttributeValue($this->sluggableField())).'-'.$count;
             $count++;
         }
 

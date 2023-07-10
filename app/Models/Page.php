@@ -34,5 +34,4 @@ class Page extends Model
     {
         return $query->where('visibility', 'public');
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Guest;
+namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function __invoke(): Response
     {
-        return Inertia::render('Guest/Home/Index', [
+        return Inertia::render('Public/Home/Index', [
             'status' => session('status'),
         ]);
     }
