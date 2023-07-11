@@ -15,7 +15,7 @@ class Administrator
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->user()->administrator) {
+        if (! $request->user()->is_administrator) {
             abort(403, 'You are not an administrator.');
         }
 
