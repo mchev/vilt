@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Here is where you can register generic web routes for your application.
+| For public, private and admin routes, see the files in the routes directory.
 |
 */
 
@@ -18,14 +17,7 @@ require __DIR__.'/public.php';
 require __DIR__.'/private.php';
 require __DIR__.'/admin.php';
 
-Route::get('/locale/{locale}', function (string $locale) {
-    $locales = config('localization.locales');
-    $isoArray = array_column($locales, 'iso');
-
-    if (! in_array($locale, $isoArray)) {
-        abort(400);
-    }
-    Session()->put('locale', $locale);
-
-    return redirect()->back();
-})->name('locale');
+Route::get('/locale/{locale}', fn (string $locale) => in_array($locale, array_column(config('localization.locales'), 'iso'))
+        ? session()->put('locale', $locale)
+        : abort(400)
+)->name('locale');
