@@ -4,8 +4,6 @@ namespace App\Traits;
 
 trait Translatable
 {
-    protected $translatables = [];
-
     public function translate($key, $value, $locale = null)
     {
         if (! in_array($key, $this->translatables)) {

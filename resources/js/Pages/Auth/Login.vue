@@ -1,5 +1,5 @@
 <script setup>
-import GuestLayout from "@/Layouts/GuestLayout.vue";
+import PublicLayout from "@/Layouts/PublicLayout.vue";
 import LoginForm from "@/Pages/Auth/Partials/LoginForm.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 
@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-    <GuestLayout>
+    <PublicLayout>
         <Head title="Log in" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
@@ -19,5 +19,5 @@ defineProps({
         </div>
 
         <LoginForm :can-reset-password="canResetPassword" />
-    </GuestLayout>
+    </PublicLayout>
 </template>

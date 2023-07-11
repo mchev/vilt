@@ -1,5 +1,5 @@
 <script setup>
-import GuestLayout from "@/Layouts/GuestLayout.vue";
+import PublicLayout from "@/Layouts/PublicLayout.vue";
 import LoginForm from "@/Pages/Auth/Partials/LoginForm.vue";
 import { Head } from "@inertiajs/vue3";
 </script>
@@ -7,7 +7,7 @@ import { Head } from "@inertiajs/vue3";
 <template>
     <Head :title="__('Login')" />
 
-    <GuestLayout>
+    <PublicLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">{{ __("Login") }}</h2>
         </template>
@@ -17,5 +17,5 @@ import { Head } from "@inertiajs/vue3";
                 <LoginForm />
             </div>
         </div>
-    </GuestLayout>
+    </PublicLayout>
 </template>
