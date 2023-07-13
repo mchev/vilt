@@ -53,13 +53,13 @@ Vilt provides a simple command to generate CRUD scaffolding for your models. The
 To generate CRUD scaffolding for a model, run the following command:
 
 ```sh
-php artisan make:crud {model} --section
+php artisan vilt:crud {model} --section
 ```
 
 For example, to generate CRUD scaffolding for a `Post` model in the `Admin` section, run the following command:
 
 ```sh
-php artisan make:crud Post --admin
+php artisan vilt:crud Post --admin
 ```
 
 
