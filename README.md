@@ -1,4 +1,4 @@
-# Vilt
+# Vilt - Work in progress
 
 Vilt is an open-source repository designed to provide a comprehensive and customizable starting point for development projects. It offers a solid foundation with a wide range of common features, eliminating the need to build everything from scratch. Whether you're an experienced developer or just starting out, Vilt aims to simplify and accelerate your application development process.
 
@@ -8,7 +8,7 @@ Vilt encourages and welcomes contributions from the community. If you have any i
 
 ## Demo
 
-Check out our demo to see Vilt in action: [https://vilt-demo.herokuapp.com/](https://vilt-demo.herokuapp.com/)
+Check out our demo to see Vilt in action: Soon
 
 Demo Credentials:
 
