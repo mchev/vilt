@@ -6,7 +6,7 @@ trait Translatable
 {
     public function translate($key, $value, $locale = null)
     {
-        if (! in_array($key, $this->translatables)) {
+        if (! in_array($key, $this->translatable)) {
             abort(500, 'Attribute is not translatable');
         }
 
@@ -53,7 +53,7 @@ trait Translatable
 
     public function getTranslationAttribute($key)
     {
-        if (in_array($key, $this->translatables)) {
+        if (in_array($key, $this->translatable)) {
             return $this->getTranslation($key);
         }
 

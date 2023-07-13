@@ -40,6 +40,29 @@ These technologies provide a powerful combination for creating modern and effici
 - [ ] API authentication
 - [ ] Documentation
 
+## Generate CRUD
+Vilt provides a simple command to generate CRUD scaffolding for your models. The command will generate the following files:
+
+- Model
+- Migration
+- Factory
+- Controller in `app/Http/Controllers/{section}/{model}Controller.php`
+- Views in `resources/js/Pages/{section}/{model}`
+- Routes in `routes/{section}.php`
+
+To generate CRUD scaffolding for a model, run the following command:
+
+```sh
+php artisan make:crud {model} --section
+```
+
+For example, to generate CRUD scaffolding for a `Post` model in the `Admin` section, run the following command:
+
+```sh
+php artisan make:crud Post --admin
+```
+
+
 ## Installation
 1. Clone the repository
 	```sh

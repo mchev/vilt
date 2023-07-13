@@ -1,0 +1,121 @@
+<?php
+
+namespace {{namespace}};
+
+use App\Http\Controllers\Controller;
+use App\Models\{{model}};
+use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
+
+class {{model}}Controller extends Controller
+{
+
+    public function index(Request $request): Response
+    {
+        return Inertia::render('{{directory}}/{{model}}/Index', [
+            '{{modelLowerPluralized}}' => {{model}}::query()
+                ->filter($request->all())
+                ->paginate()
+                ->withQueryString(),
+        ]);
+    }
+
+    public function create(): Response
+    {
+        return Inertia::render('{{directory}}/{{model}}/Create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            // 'field' => ['required', 'string', 'max:255'],
+        ]);
+
+        ${{model}} = {{model}}::create($validated);
+
+        return redirect()->route('{{directory}}.{{model}}.index')
+            ->with('success', '{{model}} created successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{model}} ${{modelLower}})
+    {
+        if (!${{model}}) {
+            return redirect()->route('{{directory}}.{{model}}.index')
+                ->with('error', '{{model}} not found.');
+        }
+
+        return Inertia::render('{{directory}}/{{model}}/Show', [
+            '{{model}}' => ${{model}},
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit({{model}} ${{modelLower}})
+    {
+        ${{model}} = {{model}}::find($id);
+
+        if (!${{model}}) {
+            return redirect()->route('{{directory}}.{{model}}.index')
+                ->with('error', '{{model}} not found.');
+        }
+
+        return Inertia::render('{{directory}}/{{model}}/Edit', [
+            '{{model}}' => ${{model}},
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, {{model}} ${{modelLower}})
+    {
+        ${{model}} = {{model}}::find($id);
+
+        if (!${{model}}) {
+            return redirect()->route('{{directory}}.{{model}}.index')
+                ->with('error', '{{model}} not found.');
+        }
+
+        ${{model}}->update($request->all());
+
+        return redirect()->route('{{directory}}.{{model}}.index')
+            ->with('success', '{{model}} updated successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{model}} ${{modelLower}})
+    {
+        ${{model}} = {{model}}::find($id);
+
+        if (!${{model}}) {
+            return redirect()->route('{{directory}}.{{model}}.index')
+                ->with('error', '{{model}} not found.');
+        }
+
+        ${{model}}->delete();
+
+        return redirect()->route('{{directory}}.{{model}}.index')
+            ->with('success', '{{model}} deleted successfully.');
+    }
+}
